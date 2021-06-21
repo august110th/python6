@@ -7,7 +7,7 @@ if not response.ok:
 
 text = response.text
 soup = BeautifulSoup(text, features='html.parser')
-KEYWORDS = {'дизайн', 'фото', 'web', 'python', 'полнота'}
+KEYWORDS = {'дизайн', 'фото', 'web', 'python'}
 articles = soup.find_all('article')
 
 for i in articles:
@@ -15,6 +15,6 @@ for i in articles:
     data = i.find('span', class_="post__time").text
     link = i.find('a', class_='post__title_link', href=True)
     if KEYWORDS & set((title.lower()).split()):
-        print(title)
         print(data)
+        print(title)
         print(link['href'])
